@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>เซอร์ไพร์วาเลนไทน์สำหรับ [ชื่อแฟน]</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #ffe6e6;
+      color: #ff4d4d;
+      text-align: center;
+      padding: 50px;
+      overflow: hidden;
+    }
+    h1 {
+      font-size: 3em;
+      animation: fadeIn 2s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 2s forwards;
+    }
+    .surprise-button {
+      padding: 15px 30px;
+      background-color: #ff4d4d;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.2em;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .surprise-button:hover {
+      background-color: #ff1a1a;
+      transform: scale(1.1);
+    }
+    .surprise-button:active {
+      transform: scale(0.9);
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    .surprise-button.pulse {
+      animation: pulse 1.5s infinite;
+    }
+
+    /* Popup Styles */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .popup-content {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      position: relative;
+    }
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 1.5em;
+      cursor: pointer;
+    }
+
+    /* หัวใจร่วง */
+    .heart {
+      position: absolute;
+      top: -50px;
+      animation: fall linear infinite;
+      color: #ff4d4d;
+      font-size: 2em;
+    }
+    @keyframes fall {
+      to { transform: translateY(100vh); }
+    }
+
+    /* หน้าแรก */
+    #home {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .code-inputs {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .code-inputs input {
+      width: 50px;
+      height: 50px;
+      text-align: center;
+      font-size: 1.5em;
+      border: 2px solid #ff4d4d;
+      border-radius: 5px;
+    }
+    #home button {
+      padding: 10px 20px;
+      background-color: #ff4d4d;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    /* หน้าเคาน์ดาวน์ */
+    #countdown-page {
+      display: none;
+    }
+
+    /* คลังภาพ (ปฏิทิน) */
+    #gallery-page {
+      display: none;
+    }
+    .calendar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 30px;
+    }
+    .month {
+      padding: 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: transform 0.3s;
+      width: 100px;
+      text-align: center;
+    }
+    .month:hover {
+      transform: scale(1.1);
+    }
+    .day {
+      padding: 10px;
+      background-color: white;
+      border-radius: 5px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .day:hover {
+      transform: scale(1.1);
+    }
+    .day-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .image-popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .image-popup img {
+      max-width: 80%;
+      max-height: 80%;
+      border-radius: 10px;
+    }
+    .back-button {
+      margin-bottom: 20px;
+    }
+    .year-selector {
+      margin-bottom: 20px;
+    }
+    .year-selector select {
+      padding: 10px;
+      font-size: 1em;
+      border: 2px solid #ff4d4d;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <!-- หน้าแรก -->
+  <div id="home">
+    <h1>กรุณากรอกรหัส</h1>
+    <div class="code-inputs">
+      <input type="text" maxlength="1" oninput="moveToNext(this, 1)">
+      <input type="text" maxlength="1" oninput="moveToNext(this, 2)">
+      <input type="text" maxlength="1" oninput="moveToNext(this, 3)">
+      <input type="text" maxlength="1" oninput="moveToNext(this, 4)">
+    </div>
+    <button onclick="checkCode()">ยืนยัน</button>
+  </div>
+
+  <!-- หน้าเคาน์ดาวน์ -->
+  <div id="countdown-page">
+    <h1>Happy Valentine's Day, [ชื่อแฟน]!</h1>
+    <p class="fade-in">คุณคือคนพิเศษที่สุดในใจฉัน 💖</p>
+
+    <!-- เคาน์ดาวน์ -->
+    <div id="countdown" style="font-size: 2em; margin: 20px 0;"></div>
+
+    <!-- ปุ่มเซอร์ไพร์ -->
+    <button class="surprise-button pulse" onclick="showPopup()">
+      คลิกเพื่อเปิดเซอร์ไพร์!
+    </button>
+
+    <!-- ปุ่มไปคลังภาพ -->
+    <button class="surprise-button" onclick="showGallery()" style="margin-top: 20px;">
+      ไปที่คลังภาพ
+    </button>
+
+    <!-- Popup -->
+    <div id="popup" class="popup">
+      <div class="popup-content">
+        <span class="close-btn" onclick="hidePopup()">&times;</span>
+        <p>ฉันรักคุณมากๆ นะ! 💖</p>
+        <video width="320" height="240" controls>
+          <source src="your-video.mp4" type="video/mp4">
+          เบราว์เซอร์ของคุณไม่รองรับการเล่นวิดีโอ
+        </video>
+      </div>
+    </div>
+
+    <!-- เพลง -->
+    <audio autoplay loop>
+      <source src="your-music.mp3" type="audio/mpeg">
+      เบราว์เซอร์ของคุณไม่รองรับการเล่นเพลง
+    </audio>
+  </div>
+
+  <!-- คลังภาพ (ปฏิทิน) -->
+  <div id="gallery-page">
+    <h1>คลังภาพความทรงจำ</h1>
+    <div class="year-selector">
+      <label for="year-select">เลือกปี:</label>
+      <select id="year-select" onchange="showMonths()">
+        <option value="2023">2023</option>
+        <option value="2024">2024</option>
+        <option value="2025">2025</option>
+      </select>
+    </div>
+    <div class="calendar" id="calendar-months">
+      <!-- เดือนจะถูกเพิ่มโดย JavaScript -->
+    </div>
+    <div id="calendar-days" style="display: none;">
+      <button class="back-button" onclick="showMonths()">กลับไปเลือกเดือน</button>
+      <div class="day-grid" id="day-grid">
+        <!-- วันจะถูกเพิ่มโดย JavaScript -->
+      </div>
+    </div>
+    <div class="image-popup" id="image-popup">
+      <span class="close-btn" onclick="hideImagePopup()">&times;</span>
+      <img id="popup-image" src="" alt="รูปภาพ">
+    </div>
+  </div>
+
+  <!-- หัวใจร่วง -->
+  <script>
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.innerHTML = '❤️';
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    }
+
+    // เริ่มหัวใจร่วงเมื่อเคาน์ดาวน์เหลือ 0
+    let heartInterval;
+    function startHeartFall() {
+      heartInterval = setInterval(createHeart, 300);
+    }
+  </script>
+
+  <!-- ตรวจสอบรหัส -->
+  <script>
+    function moveToNext(input, nextIndex) {
+      if (input.value.length === 1) {
+        const nextInput = document.querySelector(`.code-inputs input:nth-child(${nextIndex + 1})`);
+        if (nextInput) nextInput.focus();
+      }
+    }
+
+    function checkCode() {
+      const inputs = document.querySelectorAll('.code-inputs input');
+      let code = '';
+      inputs.forEach(input => {
+        code += input.value;
+      });
+
+      if (code === '1609') {
+        document.getElementById('home').style.display = 'none';
+        document.getElementById('countdown-page').style.display = 'block';
+      } else {
+        alert('รหัสไม่ถูกต้อง กรุณาลองอีกครั้ง');
+      }
+    }
+  </script>
+
+  <!-- เคาน์ดาวน์ Script -->
+  <script>
+    const targetDate = new Date('2025-09-16T16:09:25');
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        document.getElementById('countdown').innerHTML = "ถึงเวลาเซอร์ไพร์แล้ว! 💖";
+        clearInterval(interval);
+        startHeartFall();
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById('countdown').innerHTML = 
+        `${days} วัน ${hours} ชั่วโมง ${minutes} นาที ${seconds} วินาที`;
+    }
+
+    const interval = setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+
+  <!-- Popup Script -->
+  <script>
+    function showPopup() {
+      document.getElementById('popup').style.display = 'flex';
+    }
+
+    function hidePopup() {
+      document.getElementById('popup').style.display = 'none';
+    }
+  </script>
+
+  <!-- Gallery Script -->
+  <script>
+    const months = [
+      "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+    ];
+
+    const imagesByDay = {
+      "2023": {
+        "Feb": {
+          14: "valentine.jpg"
+        }
+      },
+      "2024": {
+        "Feb": {
+          14: "valentine2024.jpg"
+        }
+      },
+      "2025": {
+        "Feb": {
+          14: "valentine2025.jpg"
+        }
+      }
+      // เพิ่มรูปภาพตามปีและเดือนอื่นๆ ที่นี่
+    };
+
+    // แสดงเดือน
+    function showMonths() {
+      document.getElementById('calendar-months').style.display = 'flex';
+      document.getElementById('calendar-days').style.display = 'none';
+
+      const calendarMonths = document.getElementById('calendar-months');
+      calendarMonths.innerHTML = '';
+
+      months.forEach((month, index) => {
+        const monthDiv = document.createElement('div');
+        monthDiv.classList.add('month');
+        monthDiv.innerText = month;
+        monthDiv.onclick = () => showDays(month);
+        calendarMonths.appendChild(monthDiv);
+
+        // แบ่งแถวละ 4 เดือน
+        if ((index + 1) % 4 === 0) {
+          calendarMonths.appendChild(document.createElement('br'));
+        }
+      });
+    }
+
+    // แสดงวันในเดือนที่เลือก
+    function showDays(month) {
+      document.getElementById('calendar-months').style.display = 'none';
+      document.getElementById('calendar-days').style.display = 'block';
+
+      const dayGrid = document.getElementById('day-grid');
+      dayGrid.innerHTML = '';
+
+      const year = document.getElementById('year-select').value;
+      const daysInMonth = getDaysInMonth(month, year);
+
+      for (let day = 1; day <= daysInMonth; day++) {
+        const dayDiv = document.createElement('div');
+        dayDiv.classList.add('day');
+        dayDiv.innerText = day;
+        if (imagesByDay[year] && imagesByDay[year][month] && imagesByDay[year][month][day]) {
+          dayDiv.style.backgroundColor = '#ff4d4d';
+          dayDiv.style.color = 'white';
+          dayDiv.onclick = () => showImage(year, month, day);
+        }
+        dayGrid.appendChild(dayDiv);
+      }
+    }
+
+    // แสดงรูปภาพ
+    function showImage(year, month, day) {
+      const imageUrl = imagesByDay[year][month][day];
+      if (imageUrl) {
+        document.getElementById('popup-image').src = imageUrl;
+        document.getElementById('image-popup').style.display = 'flex';
+      }
+    }
+
+    // ซ่อน Popup รูปภาพ
+    function hideImagePopup() {
+      document.getElementById('image-popup').style.display = 'none';
+    }
+
+    // ไปที่คลังภาพ
+    function showGallery() {
+      document.getElementById('countdown-page').style.display = 'none';
+      document.getElementById('gallery-page').style.display = 'block';
+      showMonths();
+    }
+
+    // คำนวณจำนวนวันในเดือน
+    function getDaysInMonth(month, year) {
+      const monthIndex = months.indexOf(month);
+      if (monthIndex === 1) { // February
+        return isLeapYear(year) ? 29 : 28;
+      }
+      return new Date(year, monthIndex + 1, 0).getDate();
+    }
+
+    // ตรวจสอบปีอธิกสุรทิน
+    function isLeapYear(year) {
+      return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
+    }
+  </script>
+</body>
+</html>
