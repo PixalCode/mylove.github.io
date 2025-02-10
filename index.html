@@ -76,6 +76,25 @@
       text-align: center;
       position: relative;
     }
+    .popup-text {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .popup-content-text {
+      background: rgb(245, 233, 233);
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      position: relative;
+    }
     .close-btn {
       position: absolute;
       top: 10px;
@@ -224,7 +243,7 @@
     <!-- Popup -->
     <div id="popup" class="popup">
       <div class="popup-content">
-        <span class="close-btn" onclick="hidePopup()">&times;</span>
+        <span class="close-btn" onclick="hidePopup1()">&times;</span>
         <p>ฉันรักคุณมากๆ นะ! 💖</p>
         <video width="280" height="480" controls>
           <source src="video.mp4" type="video/mp4">
@@ -233,7 +252,14 @@
       </div>
     </div>
 
-    <!-- เพลง -->
+    <!-- Popup -->
+    <div id="popup-text" class="popup-text">
+      <div class="popup-content-text">
+        <span class="close-btn" onclick="hidePopup()">&times;</span>
+        <p>ฉันรักคุณมากๆ นะ! 💖</p>
+      </div>
+    </div>
+
 
   </div>
 
@@ -366,12 +392,19 @@ updateDaysTogether();
     // เปิด Popup เมื่อกดปุ่ม
     function showPopup() {
       document.getElementById('bg-music').pause(); // หยุดเพลง
-      document.getElementById('popup').style.display = 'flex'; // แสดง popup
+      document.getElementById('popup-text').style.display = 'flex'; // แสดง popup
     }
 
     function hidePopup() {
+      document.getElementById('popup').style.display = 'flex';
+      document.getElementById('popup-text').style.display = 'none'; // ซ่อน popup
+    }
+
+    function hidePopup1() {
       document.getElementById('popup').style.display = 'none';
     }
+
+
   </script>
 
   <!-- Gallery Script --><!--
