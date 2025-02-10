@@ -56,7 +56,7 @@
     }
 
 
-    /* Popup Styles */
+    /* Popup วิดีโอ */
     .popup {
       display: none;
       position: fixed;
@@ -76,6 +76,7 @@
       text-align: center;
       position: relative;
     }
+    /* pop-up ตัวหนังสือ */
     .popup-text {
       display: none;
       position: fixed;
@@ -95,24 +96,13 @@
       text-align: center;
       position: relative;
     }
+    /* ปุ่มปิด*/
     .close-btn {
       position: absolute;
       top: 10px;
       right: 10px;
       font-size: 1.5em;
       cursor: pointer;
-    }
-
-    /* หัวใจร่วง */
-    .heart {
-      position: absolute;
-      top: -50px;
-      animation: fall linear infinite;
-      color: #ff4d4d;
-      font-size: 2em;
-    }
-    @keyframes fall {
-      to { transform: translateY(100vh); }
     }
 
     /* หน้าแรก */
@@ -155,7 +145,7 @@
       margin-top: auto;
   }
 
-    /* คลังภาพ */
+    /* คลังภาพ 
     #gallery-page {
       display: none;
     }
@@ -194,6 +184,7 @@
       max-height: 80%;
       border-radius: 10px;
     }
+      */
     .flower {
       position: absolute;
       top: -50px;
@@ -210,12 +201,12 @@
   </audio>
   <!-- หน้าแรก -->
   <div id="home">
-    <h1>💗รหัสอะไรเอ่ย💗</h1>
+    <h2>💗รหัสอะไรเอ่ย💗</h2>
     <div class="code-inputs">
-      <input type="text" maxlength="1" oninput="moveToNext(this, 1)">
-      <input type="text" maxlength="1" oninput="moveToNext(this, 2)">
-      <input type="text" maxlength="1" oninput="moveToNext(this, 3)">
-      <input type="text" maxlength="1" oninput="moveToNext(this, 4)">
+      <input type="number" maxlength="1" oninput="moveToNext(this, 1)">
+      <input type="number" maxlength="1" oninput="moveToNext(this, 2)">
+      <input type="number" maxlength="1" oninput="moveToNext(this, 3)">
+      <input type="number" maxlength="1" oninput="moveToNext(this, 4)">
     </div>
     <button onclick="checkCode()">ยืนยัน</button>
   </div>
@@ -224,11 +215,11 @@
   <div id="countdown-page">
     <h1>Happy Valentine's Day</h1>
     <h2 class="fade-in">เธอคือคนพิเศษที่สุดในใจเค้า 💖</h2>
-    <h1>เราคบกับมาแล้ว</h1>
-    <h2>💖 💖 💖</h2>
+    <h2>เราคบกับมาแล้ว</h2>
+    <h3>💖 💖 💖</h3>
 
     <!-- นับวันที่คบกัน -->
-    <h1 id="days-together" style="font-size: 2em; margin: 20px 0;"></h1>
+    <h2 id="days-together" style="font-size: 2em; margin: 20px 0;"></h2>
 
     <!-- ปุ่มเซอร์ไพร์ -->
     <button class="surprise-button pulse" onclick="showPopup()">
@@ -378,13 +369,13 @@
       const minutes = Math.floor((diff / (1000 * 60)) % 60);
       const seconds = Math.floor((diff / 1000) % 60);
 
-  document.getElementById('days-together').innerHTML = 
-    `💖 ${days} วัน ${hours} ชั่วโมง ${minutes} นาที ${seconds} วินาที 💖`;
-}
+      document.getElementById('days-together').innerHTML = 
+        `💖 ${days} วัน ${hours} ชั่วโมง ${minutes} นาที ${seconds} วินาที 💖`;
+    }
 
-// อัปเดตทุกวินาที
-setInterval(updateDaysTogether, 1000);
-updateDaysTogether();
+      // อัปเดตทุกวินาที
+      setInterval(updateDaysTogether, 1000);
+      updateDaysTogether();
   </script>
 
   <!-- Popup Script -->
