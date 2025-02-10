@@ -125,7 +125,7 @@
       border-radius: 50px;
       font-size: 1.2em;
       cursor: pointer;
-      margin-top: auto;
+      margin-top: 20px;
       transition: background-color 0.3s, transform 0.3s;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
@@ -257,6 +257,7 @@
     function createFlower() {
       const flower = document.createElement('div');
       flower.innerHTML = '🌸';
+      flower.innerHTML = '💖';
       flower.classList.add('flower');
       flower.style.left = Math.random() * 100 + 'vw';
       flower.style.animationDuration = Math.random() * 1 + 5 + 's';
@@ -296,7 +297,7 @@
     document.getElementById('popup').addEventListener('click', function() {
       document.getElementById('bg-music').play();
     });
-  </script>
+</script>
   <!-- ตรวจสอบรหัส -->
   <script>
     function moveToNext(input, nextIndex) {
@@ -346,8 +347,10 @@ updateDaysTogether();
 
   <!-- Popup Script -->
   <script>
+    // เปิด Popup เมื่อกดปุ่ม
     function showPopup() {
-      document.getElementById('popup').style.display = 'flex';
+      document.getElementById('bg-music').pause(); // หยุดเพลง
+      document.getElementById('popup').style.display = 'flex'; // แสดง popup
     }
 
     function hidePopup() {
