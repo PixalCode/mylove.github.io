@@ -191,7 +191,7 @@
   </audio>
   <!-- หน้าแรก -->
   <div id="home">
-    <h1>จะรู้มั้ยนะ รหัสนี้อ่ะ</h1>
+    <h1>💗รหัสอะไรเอ่ย💗</h1>
     <div class="code-inputs">
       <input type="text" maxlength="1" oninput="moveToNext(this, 1)">
       <input type="text" maxlength="1" oninput="moveToNext(this, 2)">
@@ -257,7 +257,6 @@
     function createFlower() {
       const flower = document.createElement('div');
       flower.innerHTML = '🌸';
-      flower.innerHTML = '💖';
       flower.classList.add('flower');
       flower.style.left = Math.random() * 100 + 'vw';
       flower.style.animationDuration = Math.random() * 1 + 5 + 's';
@@ -268,6 +267,23 @@
       }, 5000);
     }
   
+    setInterval(createFlower, 500);
+  </script>
+
+  <script>
+    function createFlower() {
+      const flower = document.createElement('div');
+      flower.innerHTML = '💗';
+      flower.classList.add('flower');
+      flower.style.left = Math.random() * 100 + 'vw';
+      flower.style.animationDuration = Math.random() * 1 + 5 + 's';
+      document.body.appendChild(flower);
+
+      setTimeout(() => {
+        flower.remove();
+      }, 5000);
+    }
+
     setInterval(createFlower, 500);
   </script>
 
@@ -358,7 +374,7 @@ updateDaysTogether();
     }
   </script>
 
-  <!-- Gallery Script -->
+  <!-- Gallery Script --><!--
   <script>
     function showImage(imageUrl) {
       document.getElementById('popup-image').src = imageUrl;
@@ -375,5 +391,6 @@ updateDaysTogether();
       document.getElementById('gallery-page').style.display = 'block';
     }
   </script>
+  -->
 </body>
 </html>
