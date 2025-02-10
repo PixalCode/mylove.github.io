@@ -1,0 +1,124 @@
+// โค้ด JavaScript ที่ใช้ในเว็บไซต์นี้
+
+function createFlower() {
+  const flower = document.createElement('div');
+  flower.innerHTML = '🌸';
+  flower.classList.add('flower');
+  flower.style.left = Math.random() * 100 + 'vw';
+  flower.style.animationDuration = Math.random() * 1 + 5 + 's';
+  document.body.appendChild(flower);
+
+  setTimeout(() => {
+    flower.remove();
+  }, 5000);
+}
+
+setInterval(createFlower, 500);
+
+
+
+function createFlower() {
+  const flower = document.createElement('div');
+  flower.innerHTML = '💗';
+  flower.classList.add('flower');
+  flower.style.left = Math.random() * 100 + 'vw';
+  flower.style.animationDuration = Math.random() * 1 + 5 + 's';
+  document.body.appendChild(flower);
+
+  setTimeout(() => {
+    flower.remove();
+  }, 5000);
+}
+
+setInterval(createFlower, 500);
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  const music = document.getElementById('bg-music');
+    music.volume = 0.1; // ลดเสียงเหลือ 50% (ปรับค่าได้ 0.0 - 1.0)
+
+// เรียกให้เล่นเมื่อกดปุ่มเปิด/ปิด
+document.body.addEventListener('click', function() {
+  if (music.paused) {
+    music.play().catch(error => console.log("Autoplay blocked:", error));
+    }
+  }, { once: true });
+});
+
+
+
+document.getElementById('popup').addEventListener('click', function() {
+  document.getElementById('bg-music').pause();
+});
+
+
+
+document.getElementById('popup').addEventListener('click', function() {
+  document.getElementById('bg-music').play();
+});
+
+
+function moveToNext(input, nextIndex) {
+  if (input.value.length === 1) {
+    const nextInput = document.querySelector(`.code-inputs input:nth-child(${nextIndex + 1})`);
+    if (nextInput) nextInput.focus();
+  }
+}
+
+function checkCode() {
+  const inputs = document.querySelectorAll('.code-inputs input');
+  let code = '';
+  inputs.forEach(input => {
+    code += input.value;
+  });
+
+  if (code === '1609') {
+    document.getElementById('home').style.display = 'none';
+    document.getElementById('countdown-page').style.display = 'block';
+    updateDaysTogether(); // เริ่มนับวันที่คบกัน
+  } else {
+    alert('รหัสไม่ถูกต้อง กรุณาลองอีกครั้ง');
+  }
+}
+
+
+
+const startDate = new Date('2024-09-16T12:59:30'); // วันที่คบกัน
+
+function updateDaysTogether() {
+  const now = new Date();
+  const diff = now - startDate;
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((diff / (1000 * 60)) % 60);
+  const seconds = Math.floor((diff / 1000) % 60);
+
+document.getElementById('days-together').innerHTML = 
+    `<div class="day"> 
+    ${days} วัน<br>${hours} ชั่วโมง<br>${minutes} นาที<br>${seconds} วินาที 
+    </div>`;
+}
+
+  // อัปเดตทุกวินาที
+  setInterval(updateDaysTogether, 1000);
+  updateDaysTogether();
+
+
+
+// เปิด Popup เมื่อกดปุ่ม
+function showPopup() {
+  document.getElementById('bg-music').pause(); // หยุดเพลง
+  document.getElementById('popup-text').style.display = 'flex'; // แสดง popup
+}
+
+function hidePopup() {
+  document.getElementById('popup').style.display = 'flex';
+  document.getElementById('popup-text').style.display = 'none'; // ซ่อน popup
+}
+
+function hidePopup1() {
+  document.getElementById('popup').style.display = 'none';
+}
+
+
