@@ -1,194 +1,237 @@
-/* สไตล์ทั้งหมด */
-  body {
-    font-family: 'Arial', sans-serif;
-    background-color: #ffe6e6;
-    color: #ff4d4d;
-    text-align: center;
-    padding: 20px;
-    overflow: hidden;
-  }
-  h1 {
-    font-size: 3em;
-    animation: fadeIn 2s;
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-  .fade-in {
-    opacity: 0;
-    animation: fadeIn 2s forwards;
-  }
-  .surprise-button {
-    padding: 15px 30px;
-    background-color: #ff4d4d;
-    color: white;
-    border: none;
-    border-radius: 50px;
-    font-size: 1.2em;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  .surprise-button:hover {
-    background-color: #ff1a1a;
-    transform: scale(1.1);
-  }
-  .surprise-button:active {
-    transform: scale(0.9);
-  }
-  @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
-  }
-  .surprise-button.pulse {
-    animation: pulse 1.5s infinite;
-  }
-  #home button {
-    animation: pulse 1.5s infinite;
-  }
+  /* สไตล์ทั้งหมด */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #ffe6e6;
+      color: #ff4d4d;
+      text-align: center;
+      padding: 20px;
+      overflow: hidden;
+    }
+    h1 {
+      font-size: 3em;
+      animation: fadeIn 2s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 2s forwards;
+    }
+    .surprise-button {
+      padding: 15px 30px;
+      background-color: #ff4d4d;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.2em;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .surprise-button:hover {
+      background-color: #ff1a1a;
+      transform: scale(1.1);
+    }
+    .surprise-button:active {
+      transform: scale(0.9);
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    .surprise-button.pulse {
+      animation: pulse 1.5s infinite;
+    }
+    #home button {
+      animation: pulse 1.5s infinite;
+    }
 
 
-  /* Popup วิดีโอ */
-  .popup {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
-  .popup-content {
-    background: rgb(245, 233, 233);
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    position: relative;
-  }
-  /* pop-up ตัวหนังสือ */
-  .popup-text {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
-  .popup-content-text {
-    background: rgb(245, 233, 233);
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    position: relative;
-  }
-  /* ปุ่มปิด*/
-  .close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 1.5em;
-    cursor: pointer;
-  }
+    /* Popup */
+    .popup-text,
+    .popup-img ,
+    .popup-img2,
+    .popup-img3,
+    .popup-img4,
+    .popup-img5,
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
 
-  /* หน้าแรก */
-  #home {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 50vh;
-  }
-  .code-inputs {
-    display: flex;
-    gap: 10px;
-    margin-top: 20px;
-  }
-  .code-inputs input {
-    width: 50px;
-    height: 50px;
-    text-align: center;
-    font-size: 1.5em;
-    border: 2px solid #fe5050;
-    border-radius: 5px;
-  }
-  #home button {
-    padding: 15px 30px;
-    background-color: #ff4d4d;
-    color: white;
-    border: none;
-    border-radius: 50px;
-    font-size: 1.2em;
-    cursor: pointer;
-    margin-top: 20px;
-    transition: background-color 0.3s, transform 0.3s;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
+    .popup-content-text,
+    .popup-content-img,
+    .popup-content-img2,
+    .popup-content-img3,
+    .popup-content-img4,
+    .popup-content-img5,
+    .popup-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 90%;
+      max-height: 90%;
+      padding: 20px;
+      background: rgb(245, 233, 233);
+      border-radius: 10px;
+      text-align: center;
+      position: relative;
+    }
+    
+    .popup-content img,
+    .popup-content-img img,
+    .popup-content-img2 img,
+    .popup-content-img3 img,
+    .popup-content-img4 img,
+    .popup-content-img5 video,
+    .popup-content video {
+      max-width: 100%;
+      max-height: 60vh; /* ป้องกันไม่ให้รูปหรือวิดีโอใหญ่เกินจอ */
+      object-fit: contain; /* คงสัดส่วนของรูปและวิดีโอ */
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
 
-  /* หน้าเคาน์ดาวน์ */
-  #countdown-page {
-    display: none;
-    margin-top: auto;
-  }
+    /* ปุ่มปิด*/
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 1.5em;
+      cursor: pointer;
+    }
 
-  /* คลังภาพ 
-  #gallery-page {
-    display: none;
-  }
-  .gallery {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    margin-top: 30px;
-  }
-  .gallery img {
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
-  }
-  .gallery img:hover {
-    transform: scale(1.1);
-  }
-  .image-popup {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
-  .image-popup img {
-    max-width: 80%;
-    max-height: 80%;
-    border-radius: 10px;
-  }
-    */
-  .flower {
-    position: absolute;
-    top: -50px;
-    animation: fall linear infinite;
-  }
-  @keyframes fall {
-    to { transform: translateY(100vh); }
-  }
+    /* หน้าแรก */
+    #home {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 50vh;
+    }
+    .code-inputs {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .code-inputs input {
+      width: 50px;
+      height: 50px;
+      text-align: center;
+      font-size: 1.5em;
+      border: 2px solid #fe5050;
+      border-radius: 5px;
+    }
+    #home button {
+      padding: 15px 30px;
+      background-color: #ff4d4d;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.2em;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background-color 0.3s, transform 0.3s;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /* หน้าเคาน์ดาวน์ */
+    #countdown-page {
+      display: none;
+      margin-top: auto;
+    }
+
+    /* คลังภาพ 
+    #gallery-page {
+      display: none;
+    }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 30px;
+    }
+    .gallery img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+    .gallery img:hover {
+      transform: scale(1.1);
+    }
+    .image-popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .image-popup img {
+      max-width: 80%;
+      max-height: 80%;
+      border-radius: 10px;
+    }
+      */
+    .flower {
+      position: absolute;
+      top: -50px;
+      animation: fall linear infinite;
+    }
+    @keyframes fall {
+      to { transform: translateY(100vh); }
+    }
 
     /*วันที่คบ */
     .day {
         text-align: center;
     }
+
+   /* .popup-content img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }*/
+    
+   /* .heartbeat {
+      font-size: 3em;
+      color: #ff4d4d;
+      animation: heartbeat 1.5s infinite ease-in-out;
+    }
+    
+    @keyframes heartbeat {
+      0% {
+        transform: scale(1);
+      }
+      25% {
+        transform: scale(1.2);
+      }
+      50% {
+        transform: scale(1);
+      }
+      75% {
+        transform: scale(1.2);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }*/

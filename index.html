@@ -25,41 +25,84 @@
   <!-- หน้าเคาน์ดาวน์ -->
   <div id="countdown-page">
     <h1>Happy Valentine's Day</h1>
-    <h3 class="fade-in">เธอคือคนพิเศษที่สุดในใจเค้า 💖</h3>
+    <h3 class="fade-in">เธอคือคนพิเศษที่สุดในใจเค้า💖</h3>
 
     <!-- ปุ่มเซอร์ไพร์ -->
     <button class="surprise-button pulse" onclick="showPopup()">
       ลองกดดูสิ!
     </button>
 
+
     <!-- ปุ่มไปคลังภาพ -->
     <!--<button class="surprise-button" onclick="showGallery()" style="margin-top: 20px;">
       ไปที่คลังภาพ
     </button>-->
-
-    <!-- Popup -->
-    <div id="popup" class="popup">
-      <div class="popup-content">
-        <span class="close-btn" onclick="hidePopup1()">&times;</span>
-        <p>ฉันรักคุณมากๆ นะ! 💖</p>
-        <video width="280" height="480" controls>
-          <source src="video.mp4" type="video/mp4">
-          เบราว์เซอร์ของคุณไม่รองรับการเล่นวิดีโอ
-        </video>
-      </div>
-    </div>
-
+   
     <!-- Popup -->
     <div id="popup-text" class="popup-text">
       <div class="popup-content-text">
-        <span class="close-btn" onclick="hidePopup()">&times;</span>
-        <h1>💖เราคบกันมาถึง 💖</h1>
-        <h2 id="days-together" style="font-size: 2em; margin: 20px 0;"></h2>
-
+        <span class="close-btn" onclick="Popupimg()">&times;</span>
+        <h2>💖เราเป็นแฟนกันมา💖</h2>
+        <h1 id="days-together" style="font-size: 2em; margin: 20px 0;"></h1>
       </div>
     </div>
 
+    <!-- Popup1 -->
+    <div id="popup" class="popup">
+      <div class="popup-content">
+        <span class="close-btn" onclick="Popupimg2()">&times;</span>
+        <p>ฉันรักคุณมากๆ นะ! 💖</p>
+        <img class="popup-image" src="gallery\120967.png" alt="รูปภาพเซอร์ไพรส์1" style="max-width: 80%; border-radius: 10px; margin-bottom: 15px;">
+      </div>
+    </div>
 
+    <!-- Popup2 -->
+    <div id="popup-img" class="popup-img">
+      <div class="popup-content-img">
+        <span class="close-btn" onclick="Popupimg3()">&times;</span>
+        <p>ฉันรักคุณมากๆ นะ! 💖</p>
+        <img class="popup-image" src="gallery\1010673.jpg" alt="รูปภาพเซอร์ไพรส์2" style="max-width: 80%; border-radius: 10px; margin-bottom: 15px;">
+      </div>
+    </div>
+
+    <!-- Popup3 -->
+    <div id="popup-img2" class="popup-img2">
+      <div class="popup-content-img2">
+        <span class="close-btn" onclick="Popupimg4()">&times;</span>
+        <p>ฉันรักคุณมากๆ นะ! 💖</p>
+        <img class="popup-image" src="gallery/051267.webp" alt="รูปภาพเซอร์ไพรส์3" style="max-width: 80%; border-radius: 10px; margin-bottom: 15px;">
+      </div>
+    </div> 
+
+    <!-- Popup4 -->
+    <div id="popup-img3" class="popup-img3">
+      <div class="popup-content-img3">
+        <span class="close-btn" onclick="Popupimg5()">&times;</span>
+        <p>ฉันรักคุณมากๆ นะ! 💖</p>
+        <img class="popup-image" src="gallery\120967.png" alt="รูปภาพเซอร์ไพรส์4" style="max-width: 80%; border-radius: 10px; margin-bottom: 15px;">
+      </div>
+    </div>
+
+    <!-- Popup5 -->
+    <div id="popup-img4" class="popup-img4">
+      <div class="popup-content-img4">
+        <span class="close-btn" onclick="Popupimg6()">&times;</span>
+        <p>ฉันรักคุณมากๆ นะ! 💖</p>
+        <img class="popup-image" src="gallery/061267.webp" alt="รูปภาพเซอร์ไพรส์5" style="max-width: 80%; border-radius: 10px; margin-bottom: 15px;">
+      </div>
+    </div>
+
+    <!-- Popup6 -->
+    <div id="popup-img5" class="popup-img5">
+      <div class="popup-content-img5">
+        <span class="close-btn" onclick="hidePopup()">&times;</span>
+        <p>ฉันรักคุณมากๆ นะ! 💖</p>
+        <video id="popup-video" width="220" height="360" controls>
+          <source src="gallery/1010671.mp4" type="video/mp4">
+          เบราว์เซอร์ของคุณไม่รองรับการเล่นวิดีโอ
+        </video>    
+      </div>
+    </div>
   </div>
 
   <!-- คลังภาพ

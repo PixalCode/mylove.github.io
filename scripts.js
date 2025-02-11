@@ -2,23 +2,6 @@
 
 function createFlower() {
   const flower = document.createElement('div');
-  flower.innerHTML = '🌸';
-  flower.classList.add('flower');
-  flower.style.left = Math.random() * 100 + 'vw';
-  flower.style.animationDuration = Math.random() * 1 + 5 + 's';
-  document.body.appendChild(flower);
-
-  setTimeout(() => {
-    flower.remove();
-  }, 5000);
-}
-
-setInterval(createFlower, 500);
-
-
-
-function createFlower() {
-  const flower = document.createElement('div');
   flower.innerHTML = '💗';
   flower.classList.add('flower');
   flower.style.left = Math.random() * 100 + 'vw';
@@ -32,8 +15,6 @@ function createFlower() {
 
 setInterval(createFlower, 500);
 
-
-
 document.addEventListener("DOMContentLoaded", function() {
   const music = document.getElementById('bg-music');
     music.volume = 0.1; // ลดเสียงเหลือ 50% (ปรับค่าได้ 0.0 - 1.0)
@@ -46,18 +27,14 @@ document.body.addEventListener('click', function() {
   }, { once: true });
 });
 
-
-
 document.getElementById('popup').addEventListener('click', function() {
-  document.getElementById('bg-music').pause();
+  const music = document.getElementById('bg-music');
+  if (music.paused) {
+    music.play();
+  } else {
+    music.pause();
+  }
 });
-
-
-
-document.getElementById('popup').addEventListener('click', function() {
-  document.getElementById('bg-music').play();
-});
-
 
 function moveToNext(input, nextIndex) {
   if (input.value.length === 1) {
@@ -82,8 +59,6 @@ function checkCode() {
   }
 }
 
-
-
 const startDate = new Date('2024-09-16T12:59:30'); // วันที่คบกัน
 
 function updateDaysTogether() {
@@ -94,31 +69,53 @@ function updateDaysTogether() {
   const minutes = Math.floor((diff / (1000 * 60)) % 60);
   const seconds = Math.floor((diff / 1000) % 60);
 
-document.getElementById('days-together').innerHTML = 
+  document.getElementById('days-together').innerHTML = 
     `<div class="day"> 
     ${days} วัน<br>${hours} ชั่วโมง<br>${minutes} นาที<br>${seconds} วินาที 
     </div>`;
 }
 
-  // อัปเดตทุกวินาที
-  setInterval(updateDaysTogether, 1000);
-  updateDaysTogether();
-
-
+// อัปเดตทุกวินาที
+setInterval(updateDaysTogether, 1000);
+updateDaysTogether();
 
 // เปิด Popup เมื่อกดปุ่ม
 function showPopup() {
-  document.getElementById('bg-music').pause(); // หยุดเพลง
   document.getElementById('popup-text').style.display = 'flex'; // แสดง popup
 }
 
-function hidePopup() {
+function Popupimg() {
+  //document.getElementById('bg-music').pause(); // หยุดเพลง
   document.getElementById('popup').style.display = 'flex';
   document.getElementById('popup-text').style.display = 'none'; // ซ่อน popup
 }
 
-function hidePopup1() {
+function Popupimg2() {
+  document.getElementById('popup-img').style.display = 'flex';
   document.getElementById('popup').style.display = 'none';
+} 
+
+function Popupimg3() {
+  document.getElementById('popup-img2').style.display = 'flex';
+  document.getElementById('popup-img').style.display = 'none';
 }
 
+function Popupimg4() {
+  document.getElementById('popup-img3').style.display = 'flex';
+  document.getElementById('popup-img2').style.display = 'none';
+}
+
+function Popupimg5() {
+  document.getElementById('popup-img4').style.display = 'flex';
+  document.getElementById('popup-img3').style.display = 'none';
+}
+
+function Popupimg6() {
+  document.getElementById('popup-img5').style.display = 'flex';
+  document.getElementById('popup-img4').style.display = 'none';
+}
+
+function hidePopup() {
+  document.getElementById('popup-img5').style.display = 'none';
+}
 
