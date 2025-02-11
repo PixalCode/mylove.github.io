@@ -27,15 +27,6 @@ document.body.addEventListener('click', function() {
   }, { once: true });
 });
 
-document.getElementById('popup').addEventListener('click', function() {
-  const music = document.getElementById('bg-music');
-  if (music.paused) {
-    music.play();
-  } else {
-    music.pause();
-  }
-});
-
 function moveToNext(input, nextIndex) {
   if (input.value.length === 1) {
     const nextInput = document.querySelector(`.code-inputs input:nth-child(${nextIndex + 1})`);
@@ -91,16 +82,23 @@ function Popupimg() {
 }
 
 function Popupimg2() {
+  document.getElementById('bg-music').pause(); // หยุดเพลง
+  document.getElementById('popup-video').play(); // เล่นวิดีโอ
   document.getElementById('popup-img').style.display = 'flex';
   document.getElementById('popup').style.display = 'none';
 } 
 
 function Popupimg3() {
+  document.getElementById('bg-music').pause(); // เล่นเพลง
+  document.getElementById('popup-video2').play(); // เล่นวิดีโอ
+  document.getElementById('popup-video').pause(); // หยุดเพลง
   document.getElementById('popup-img2').style.display = 'flex';
   document.getElementById('popup-img').style.display = 'none';
 }
 
 function Popupimg4() {
+  document.getElementById('bg-music').play(); // หยุดเพลง
+  document.getElementById('popup-video2').pause(); // เล่นวิดีโอ
   document.getElementById('popup-img3').style.display = 'flex';
   document.getElementById('popup-img2').style.display = 'none';
 }
@@ -115,7 +113,22 @@ function Popupimg6() {
   document.getElementById('popup-img4').style.display = 'none';
 }
 
-function hidePopup() {
+function Popupimg7() {
+  document.getElementById('bg-music').pause(); // เล่นเพลง
+  document.getElementById('popup-video3').play(); // เล่นวิดีโอ
+  document.getElementById('popup-img6').style.display = 'flex';
   document.getElementById('popup-img5').style.display = 'none';
+}
+
+function Popupimg8() {
+  document.getElementById('bg-music').play(); // เล่นเพลง
+  document.getElementById('popup-video3').pause(); // หยุดเล่นวิดีโอ
+  document.getElementById('popup-text2').style.display = 'flex';
+  document.getElementById('popup-img6').style.display = 'none';
+}
+
+
+function hidePopup() {
+  document.getElementById('popup-text2').style.display = 'none';
 }
 

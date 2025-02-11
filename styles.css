@@ -52,11 +52,13 @@
 
     /* Popup */
     .popup-text,
+    .popup-text2,
     .popup-img ,
     .popup-img2,
     .popup-img3,
     .popup-img4,
     .popup-img5,
+    .popup-img6,
     .popup {
       display: none;
       position: fixed;
@@ -71,11 +73,13 @@
     }
 
     .popup-content-text,
+    .popup-content-text2,
     .popup-content-img,
     .popup-content-img2,
     .popup-content-img3,
     .popup-content-img4,
     .popup-content-img5,
+    .popup-content-img6,
     .popup-content {
       display: flex;
       flex-direction: column;
@@ -90,12 +94,12 @@
     }
     
     .popup-content img,
-    .popup-content-img img,
-    .popup-content-img2 img,
+    .popup-content-img video,
+    .popup-content-img2 video,
     .popup-content-img3 img,
     .popup-content-img4 img,
-    .popup-content-img5 video,
-    .popup-content video {
+    .popup-content-img5 img,
+    .popup-content-img6 img {
       max-width: 100%;
       max-height: 60vh; /* ป้องกันไม่ให้รูปหรือวิดีโอใหญ่เกินจอ */
       object-fit: contain; /* คงสัดส่วนของรูปและวิดีโอ */
